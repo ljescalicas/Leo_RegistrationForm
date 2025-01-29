@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Student Registration Form</h1>
+        <form id="registerForm">
+            <label for="student-id">Student ID Number:</label>
+            <input type="text" id="student-id" name="student-id" placeholder="Enter your Student ID Number" required>
+            
+            <label for="full-name">Full Name:</label>
+            <input type="text" id="full-name" name="full-name" placeholder="Enter your full name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+            
+            <label>Gender:</label>
+            <div class="gender-options">
+                <input type="radio" id="male" name="gender" value="Male" required>
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="Female" required>
+                <label for="female">Female</label>
+                <input type="radio" id="other" name="gender" value="Other" required>
+                <label for="other">Other</label>
+            </div>
+            
+            <label for="course">Course:</label>
+            <select id="course" name="course" required>
+                <option value="" disabled selected>Select your course</option>
+                <option value="course">Bachelor of Science in Information Technology</option>
+                <option value="Course 2">Bachelor of Science in Computer Science</option>
+                <option value="Course 3">Bachelor of Science in Psychology</option>
+            </select>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+            
+            <button type="button" id="registerButton" href= "dashboard.html">Register</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registerButton').addEventListener('click', function() {
+            // Get input values
+            const studentID = document.getElementById('student-id').value;
+            const fullName = document.getElementById('full-name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const gender = document.querySelector('input[name="gender"]:checked').value;
+            const course = document.getElementById('course').value;
+
+            // Store values in localStorage
+            localStorage.setItem('studentData', JSON.stringify({ studentID, fullName, email, phone, gender, course }));
+
+            // Redirect to Dashboard
+            alert('Registration Successful!');
+            window.location.href = 'dashboard.html';
+        });
+    </script>
+</body>
+</html>
